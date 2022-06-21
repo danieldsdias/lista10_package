@@ -11,6 +11,22 @@ class NewItemWidget extends StatefulWidget {
 
   const NewItemWidget(this.addTx, [this.color]);
 
+  static void startAddNewItem(
+      BuildContext ctx, Function function, Color? color) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return GestureDetector(
+          onTap: () => {},
+          behavior: HitTestBehavior.opaque,
+          child: color == null
+              ? NewItemWidget(function)
+              : NewItemWidget(function, color),
+        );
+      },
+    );
+  }
+
   @override
   State<NewItemWidget> createState() => _NewItemWidgetState(color);
 }
@@ -29,22 +45,6 @@ class _NewItemWidgetState extends State<NewItemWidget> {
       useColor = true;
       _mainColor = color as ColorSwatch?;
     }
-  }
-
-  static void startAddNewItem(
-      BuildContext ctx, Function function, Color? color) {
-    showModalBottomSheet(
-      context: ctx,
-      builder: (_) {
-        return GestureDetector(
-          onTap: () => {},
-          behavior: HitTestBehavior.opaque,
-          child: color == null
-              ? NewItemWidget(function)
-              : NewItemWidget(function, color),
-        );
-      },
-    );
   }
 
   void _openDialog(String title, Widget content) {
