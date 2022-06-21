@@ -31,6 +31,22 @@ class _NewItemWidgetState extends State<NewItemWidget> {
     }
   }
 
+  static void startAddNewItem(
+      BuildContext ctx, Function function, Color? color) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return GestureDetector(
+          onTap: () => {},
+          behavior: HitTestBehavior.opaque,
+          child: color == null
+              ? NewItemWidget(function)
+              : NewItemWidget(function, color),
+        );
+      },
+    );
+  }
+
   void _openDialog(String title, Widget content) {
     showDialog(
       context: context,

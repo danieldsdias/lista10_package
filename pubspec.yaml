@@ -1,6 +1,6 @@
 name: lista10_package
 description: A Flutter package with some widgets used on lista10 app.
-version: 0.1.0
+version: 0.2.0
 homepage: https://github.com/danieldsdias/lista10_package
 
 environment:

@@ -1,3 +1,7 @@
+## 0.2.0
+
+* Adds startAddNewItem function.
+
 ## 0.1.0
 
 * Adds New Item and Image widgets.
