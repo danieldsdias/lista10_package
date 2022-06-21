@@ -41,7 +41,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final valor = Calculator();
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -69,12 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'O número $_counter é:',
-            ),
-            Text(
-              valor.resto(_counter, 2) == 0 ? 'Par' : 'Impar',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+              'O botao foi pressionado $_counter vezes',
+            )
           ],
         ),
       ),

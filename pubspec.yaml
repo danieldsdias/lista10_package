@@ -1,6 +1,6 @@
 name: lista10_package
-description: A new Flutter package project.
-version: 0.0.1
+description: A Flutter package with some widgets used on lista10 app.
+version: 0.1.0
 homepage: https://github.com/danieldsdias/lista10_package
 
 environment:
@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_material_color_picker: ^1.1.0+2
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:
