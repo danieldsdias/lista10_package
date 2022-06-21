@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Fix startAddNewItem function.
+
 ## 0.2.0
 
 * Adds startAddNewItem function.
