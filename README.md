@@ -34,7 +34,7 @@ flutter pub get
 
 ## Uso
 
-Um exemplo de uso pode ser visualizado em `/example/lib/main.dart`
+Um exemplo de uso pode ser visualizado em [/example/lib/main.dart](https://github.com/danieldsdias/lista10_package/blob/main/example/lib/main.dart)
 
 ## Informação adicional
 
