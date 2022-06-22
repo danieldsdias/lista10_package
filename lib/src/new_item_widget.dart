@@ -11,8 +11,8 @@ class NewItemWidget extends StatefulWidget {
 
   const NewItemWidget(this.addTx, [this.color]);
 
-  static void startAddNewItem(
-      BuildContext ctx, Function function, Color? color) {
+  static void startAddNewItem(BuildContext ctx, Function function,
+      [Color? color]) {
     showModalBottomSheet(
       context: ctx,
       builder: (_) {

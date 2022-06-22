@@ -1,39 +1,43 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Este pacote reune alguns widgets úteis usados no app Lista10.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+* ImageWidget: Widget que mostra uma imagem com um ícone de edição e 2 botões dentro de um modal quando o usuário clica na imagem para alterar. Os botões oferecem a opção de troca da imagem usando outra imagem da galeria ou câmera.
 
-## Getting started
+* NewItemWidget: Widget com modal apresentado em várias telas no botão de adição de item. Um widget simples onde é capturado o título de um novo item e uma cor de forma opcional.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Por onde começar
 
-## Usage
+Para usar este pacote adicione-o na sessão `dependencies` do seu `pubspec.yaml`:
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
+- Via github (mais recomendado)
+```yaml
+dependencies:
+lista10_package: 
+    git:
+      url: https://github.com/danieldsdias/lista10_package
+      ref: main
 ```
 
-## Additional information
+- Clonando o repositório em uma pasta relativa à localização do seu projeto
+```yaml
+dependencies:
+lista10_package: 
+    path: ../lista10_package
+```
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Feito isso, rode o comando na raiz do seu projeto:
+
+```shell
+flutter pub get
+```
+
+## Uso
+
+Um exemplo de uso pode ser visualizado em `/example/lib/main.dart`
+
+## Informação adicional
+
+Faz uso dos seguintes pacotes:
+- flutter_material_color_picker
+- image_picker

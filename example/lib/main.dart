@@ -1,5 +1,12 @@
+// ignore_for_file: depend_on_referenced_packages
+
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lista10_package/lista10_package.dart';
+import 'package:image_picker/image_picker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,11 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Lista10 Package Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Lista10 Package Demo'),
     );
   }
 }
@@ -31,16 +38,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  var itemList = ['item 1', 'item 2'];
+  File? image;
 
-  void _incrementCounter() {
+  void _addNewItem(String title) {
     setState(() {
-      _counter++;
+      itemList.add(title);
     });
+  }
+
+  Future pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+
+      if (image == null) return;
+
+      final imageTemp = File(image.path);
+      setState(() => this.image = imageTemp);
+    } on PlatformException catch (e) {
+      if (kDebugMode) {
+        print('Failed to pick image: $e');
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    const double imageSize = 160;
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -48,34 +72,43 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'O botao foi pressionado $_counter vezes',
-            )
+            ClipOval(
+              child: image != null
+                  ? ImageWidget(
+                      image: image!,
+                      onClicked: (source) => pickImage(source),
+                      size: imageSize)
+                  : const FlutterLogo(size: imageSize),
+            ),
+            const SizedBox(height: 24),
+            image == null
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ImageWidget.buildButton(
+                          title: 'Galeria',
+                          icon: Icons.image_outlined,
+                          onClicked: () => pickImage(ImageSource.gallery)),
+                      const Padding(
+                          padding: EdgeInsets.only(left: 20, right: 20)),
+                      ImageWidget.buildButton(
+                          title: 'Camera',
+                          icon: Icons.camera_alt_outlined,
+                          onClicked: () => pickImage(ImageSource.camera)),
+                    ],
+                  )
+                : const SizedBox(height: 24),
+            Padding(padding: EdgeInsets.all(50)),
+            Text('Lista de itens: \n${itemList.join('\n')}'),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: () => NewItemWidget.startAddNewItem(context, _addNewItem),
+        tooltip: 'Adiciona um item',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

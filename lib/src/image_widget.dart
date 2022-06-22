@@ -18,6 +18,21 @@ class ImageWidget extends StatelessWidget {
     required this.size,
   }) : super(key: key);
 
+  static Widget buildButton({
+    required String title,
+    required IconData icon,
+    required VoidCallback onClicked,
+  }) =>
+      ElevatedButton(
+          onPressed: onClicked,
+          child: Row(
+            children: [
+              Icon(icon, size: 28),
+              const SizedBox(width: 16),
+              Text(title),
+            ],
+          ));
+
   Future<ImageSource?> showImageSource(BuildContext context) async {
     if (Platform.isIOS) {
       return showCupertinoModalPopup<ImageSource>(

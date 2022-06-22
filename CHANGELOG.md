@@ -1,3 +1,7 @@
+## 0.3.0
+
+* Adds buildButton function and update example.
+
 ## 0.2.1
 
 * Fix startAddNewItem function.
