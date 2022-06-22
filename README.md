@@ -1,4 +1,4 @@
-Este pacote reúne alguns widgets úteis usados no app Lista10.
+Este pacote reúne alguns widgets úteis usados no app [Lista10](https://github.com/danieldsdias/lista10).
 
 ## Features
 
