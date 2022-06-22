@@ -39,5 +39,5 @@ Um exemplo de uso pode ser visualizado em `/example/lib/main.dart`
 ## Informação adicional
 
 Faz uso dos seguintes pacotes:
-- flutter_material_color_picker
-- image_picker
+- [flutter_material_color_picker](https://pub.dev/packages/flutter_material_color_picker)
+- [image_picker](https://pub.dev/packages/image_picker)
