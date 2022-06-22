@@ -1,4 +1,4 @@
-Este pacote reune alguns widgets úteis usados no app Lista10.
+Este pacote reúne alguns widgets úteis usados no app Lista10.
 
 ## Features
 
